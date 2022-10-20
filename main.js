@@ -2,7 +2,7 @@ const fs = require('fs');
 const readline = require('readline');
 var rl = readline.createInterface(process.stdin, process.stdout);
 
-let tasks = ["task1", "task2", "task3"]
+let totat_tasks = ["task1", "task2", "task3"]
 const showtasks = () => {
     console.log('Welcome to your task manager, Press:')
     rl.question(
@@ -15,36 +15,36 @@ const showtasks = () => {
             switch (taskNo){
                 // console.log(typeof(taskNo))
                 case '1': 
-                    console.log(tasks);
+                    console.log(totat_tasks);
                         break;
                 case '2': 
 
-                        rl.question('to add a task name, give name',(addTask) =>{
+                        rl.question('give name to add a task name',(addTask) =>{
                         // console.log(addTask+"enter task")
-                        tasks.push(addTask);
-                        console.log("added an element in an array",tasks);
+                        totat_tasks.push(addTask);
+                        console.log("added an element in the array",totat_tasks);
                     }
                     )
 
                         break;
                 case '3': 
-                    console.log(tasks);
-                    rl.question('to delete a task, give the taskname',(deletTask) =>{
-                        tasks = tasks.filter(a=> a !==  deletTask )
-                        console.log(tasks);
+                    console.log(totat_tasks);
+                    rl.question('give taskname to delete a task',(deletTask) =>{
+                        totat_tasks = totat_tasks.filter(a=> a !==  deletTask )
+                        console.log(totat_tasks);
 
                     }
                     )
                         break;
                 case '4': 
-                    console.log(tasks);
+                    console.log(totat_tasks);
                     
 
                     rl.question("to mark task as done name the task",(taskDone) =>
                         {
                             const tasksMap = new Map();
                             var task1, task2, task3;
-                            tasksMap.set(taskDone,'Done');
+                            tasksMap.set(taskDone,'Task completed');
                             for (const [key, value] of tasksMap) {
                                 console.log(`${key} = ${value}`);
                             }
@@ -54,18 +54,13 @@ const showtasks = () => {
                         break;
                 case 5:
                         break;
-                default: console.log('listed item not selscted')
+                default: console.log('listed item is not selected')
             }
-        // console.log('you selected:' + taskNo);
+        
         rl.close();
     })
-    // console.log(tasks)
+   
 }
 
 showtasks()
 
-// EXEMPLE
-// rl.question('What is your age? ', (age) => {
-//     console.log('Your age is: ' + age);
-//     rl.close();
-// });
